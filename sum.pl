@@ -1,12 +1,20 @@
 
-% sum(X, Y, Z)
-% it is true if Z is the sum of X + Y.
 
-% 1. P(n0)
-% 2. (n-1) -> P(n)
+% sum(?X, ?Y, ?Z)
+% it is true if Z is X + Y.
 
 sum(0, Y, Y).
 
-% P(n)        <-  P(n-1)
-% ----------     -----------
-sum(n(X), Y, n(Z)) :- sum(X, Y, Z).  
+
+% sum(n-1,....) -> sum(n, .....)
+
+sum(n(x), Y, n(Z)) :- sum(X, Y, Z).
+
+
+% substr(?X, ?Y, ?Z)
+% it is true if Z is X - Y
+
+substr(X, 0, X).
+% substr(n-1, .....)  -> substr(n,....)
+
+substra(X, n(Y), Z)   :- substr(X, Y, n(Z)).
